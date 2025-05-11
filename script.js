@@ -122,6 +122,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Показать главный экран при загрузке
     switchScreen('dashboard');
 
+    console.log('addIncomeBtn:', addIncomeBtn);
+console.log('addExpenseBtn:', addExpenseBtn);
+addIncomeBtn.addEventListener('click', () => {
+    openAddRecordModal('income');
+    console.log('Клик по кнопке "Добавить доход"');
+});
+
+addExpenseBtn.addEventListener('click', () => {
+    openAddRecordModal('expense');
+    console.log('Клик по кнопке "Добавить расход"');
+});
+
     // ------ Работа с модальным окном добавления записи ------
     addIncomeBtn.addEventListener('click', () => {
         openAddRecordModal('income');
