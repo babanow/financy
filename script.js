@@ -21,10 +21,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const recordDateInput = document.getElementById('recordDate');
     const recordCategorySelect = document.getElementById('recordCategory');
     const recordAmountInput = document.getElementById('recordAmount');
-  const currentBalanceElement = document.getElementById('currentBalance');
+    const recordDescriptionInput = document.getElementById('recordDescription');
     const saveRecordBtn = document.getElementById('saveRecordBtn');
 
-    // Элементы модального окна добавления категории
     const addCategoryModal = document.getElementById('addCategoryModal');
     const closeCategoryModal = document.getElementById('closeCategoryModal');
     const categoryNameInput = document.getElementById('categoryName');
