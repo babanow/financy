@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const recordDateInput = document.getElementById('recordDate');
     const recordCategorySelect = document.getElementById('recordCategory');
     const recordAmountInput = document.getElementById('recordAmount');
-    const recordDescriptionInput = documentgetElementById('recordDescription');
+    const recordDescriptionInput = document.getElementById('recordDescription');
     const saveRecordBtn = document.getElementById('saveRecordBtn');
 
     // Элементы модального окна добавления категории
