@@ -1,90 +1,119 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <title>Учет финансов</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Финанс Трекер</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
     <div class="container">
-        <header>
-            <div class="balance">Баланс: <span id="currentBalance">0.00</span></div>
-            <div class="income-expense">
-                <div>Доходы: <span id="totalIncome">0.00</span></div>
-                <div>Расходы: <span id="totalExpense">0.00</span></div>
+        <div class="screen" id="dashboardScreen">
+            <h1>Главная</h1>
+            <div class="balance-card">
+                <p>Текущий баланс</p>
+                <h2 id="currentBalance">0.00 USD</h2>
+                <div class="income-expense">
+                    <div>
+                        <p>Доходы</p>
+                        <span id="totalIncome">0.00 USD</span>
+                    </div>
+                    <div>
+                        <p>Расходы</p>
+                        <span id="totalExpense">0.00 USD</span>
+                    </div>
+                </div>
             </div>
-        </header>
-        <div class="quick-actions">
-            <button id="addIncomeBtn">Добавить доход</button>
-            <button id="addExpenseBtn">Добавить расход</button>
+            <div class="quick-actions">
+                <button id="addIncomeBtn">+ Добавить доход</button>
+                <button id="addExpenseBtn">- Добавить расход</button>
+            </div>
+            <div class="latest-transactions">
+                <h3>Последние операции</h3>
+                <ul id="transactionsList">
+                    </ul>
+            </div>
         </div>
-        <section class="latest-transactions">
-            <h2>Последние операции</h2>
-            <ul id="transactionsList">
-                </ul>
-        </section>
-        <nav class="bottom-nav">
+
+        <div class="screen" id="incomeScreen" style="display: none;">
+            <h1>Доходы</h1>
+            <div class="action-button">
+                <button id="addIncomeRecordBtn">+ Добавить доход</button>
+            </div>
+            <div class="transactions-list">
+                <div id="incomeList">
+                    </div>
+            </div>
+        </div>
+
+        <div class="screen" id="expenseScreen" style="display: none;">
+            <h1>Расходы</h1>
+            <div class="action-button">
+                <button id="addExpenseRecordBtn">- Добавить расход</button>
+            </div>
+            <div class="transactions-list">
+                <div id="expenseList">
+                    </div>
+            </div>
+        </div>
+
+        <div class="screen" id="reportsScreen" style="display: none;">
+            <h1>Отчеты</h1>
+            <div class="report-options">
+                <label for="reportPeriod">Период:</label>
+                <select id="reportPeriod">
+                    <option value="month">Текущий месяц</option>
+                    <option value="year">Текущий год</option>
+                    <option value="all">Все время</option>
+                </select>
+            </div>
+            <div id="reportDetails">
+                </div>
+        </div>
+
+        <div class="screen" id="categoriesScreen" style="display: none;">
+            <h1>Категории</h1>
+            <div class="category-list">
+                <div>
+                    <h3>Доходы</h3>
+                    <ul id="incomeCategoriesList">
+                        </ul>
+                    <button id="addIncomeCategoryBtn">+ Добавить категорию дохода</button>
+                </div>
+                <div>
+                    <h3>Расходы</h3>
+                    <ul id="expenseCategoriesList">
+                        </ul>
+                    <button id="addExpenseCategoryBtn">+ Добавить категорию расхода</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="screen" id="settingsScreen" style="display: none;">
+            <h1>Настройки</h1>
+            <div class="settings-item">
+                <label for="currency">Валюта:</label>
+                <select id="currency">
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="RUB">RUB</option>
+                    </select>
+            </div>
+        </div>
+
+        <div class="bottom-nav">
             <button data-screen="dashboard" class="active">Главная</button>
             <button data-screen="income">Доходы</button>
             <button data-screen="expense">Расходы</button>
             <button data-screen="reports">Отчеты</button>
             <button data-screen="categories">Категории</button>
             <button data-screen="settings">Настройки</button>
-        </nav>
-
-        <div id="incomeScreen" class="screen" style="display: none;">
-            <h2>Доходы</h2>
-            <button id="addIncomeRecordBtn">+ Добавить доход</button>
-            <div id="incomeList">
-                </div>
-        </div>
-
-        <div id="expenseScreen" class="screen" style="display: none;">
-            <h2>Расходы</h2>
-            <button id="addExpenseRecordBtn">+ Добавить расход</button>
-            <div id="expenseList">
-                </div>
-        </div>
-
-        <div id="reportsScreen" class="screen" style="display: none;">
-            <h2>Отчеты</h2>
-            <label for="reportPeriod">Период:</label>
-            <select id="reportPeriod">
-                <option value="day">Сегодня</option>
-                <option value="week">Неделя</option>
-                <option value="month" selected>Месяц</option>
-                <option value="year">Год</option>
-            </select>
-            <div id="reportDetails">
-                </div>
-        </div>
-
-        <div id="categoriesScreen" class="screen" style="display: none;">
-            <h2>Категории</h2>
-            <h3>Доходы</h3>
-            <ul id="incomeCategoriesList">
-                </ul>
-            <button id="addIncomeCategoryBtn">+ Добавить категорию дохода</button>
-            <h3>Расходы</h3>
-            <ul id="expenseCategoriesList">
-                </ul>
-            <button id="addExpenseCategoryBtn">+ Добавить категорию расхода</button>
-        </div>
-
-        <div id="settingsScreen" class="screen" style="display: none;">
-            <h2>Настройки</h2>
-            <label for="currency">Валюта:</label>
-            <select id="currency">
-                <option value="USD" selected>USD</option>
-                <option value="EUR">EUR</option>
-                <option value="RUB">RUB</option>
-                </select>
         </div>
 
         <div id="addRecordModal" class="modal" style="display: none;">
             <div class="modal-content">
                 <span class="close-button" id="closeRecordModal">&times;</span>
-                <h2 id="modalTitle"></h2>
+                <h2 id="modalTitle">Добавить запись</h2>
                 <label for="recordDate">Дата:</label>
                 <input type="date" id="recordDate">
                 <label for="recordCategory">Категория:</label>
@@ -93,7 +122,7 @@
                 <label for="recordAmount">Сумма:</label>
                 <input type="number" id="recordAmount" step="0.01">
                 <label for="recordDescription">Описание (необязательно):</label>
-                <input type="text" id="recordDescription">
+                <textarea id="recordDescription"></textarea>
                 <button id="saveRecordBtn">Сохранить</button>
             </div>
         </div>
@@ -112,7 +141,6 @@
                 <button id="saveCategoryBtn">Сохранить</button>
             </div>
         </div>
-
     </div>
     <script src="script.js"></script>
 </body>
