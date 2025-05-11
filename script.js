@@ -66,4 +66,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function getCategories() {
         const storedCategories = localStorage.getItem(STORAGE_KEY_CATEGORIES);
-        return storedCategories ? JSON.parse(storedCategories) : { income: ['Зарплата',
+        return storedCategories ? JSON.parse(storedCategories) : { income: ['Зарплата', 'Подработка', 'Проценты'], expense: ['Продукты', 'Транспорт', 'Развлечения'] };
+    }
+
+    function saveCategories(categories) {
+        localStorage.setItem(STORAGE_KEY_CATEGORIES, JSON.stringify(categories));
+    }
+
+    function getCurrentCurrency() {
+        return localStorage.getItem(STORAGE_KEY_CURRENCY) || 'USD';
+    }
+
+    function saveCurrentCurrency(currency) {
+        localStorage.setItem(STORAGE_KEY_CURRENCY, currency);
+    }
+
+    // ------ Переключение между экранами ------
+    const navButtons = document.querySelectorAll('.bottom-nav button');
+    navButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const targetScreen = event.target.dataset.screen;
+            switchScreen(targetScreen);
+        });
+    });
+
+    function switchScreen(screenId) {
+        screens.forEach(screen => {
+            screen.style.display = 'none';
+        });
+        navButtons.forEach(button => {
+            button.classList.remove('active');
+            if (button.dataset.screen === screenId) {
+                button.classList.add('active');
+            }
+        });
+        document.getElementById(screenId + 'Screen').style.display = 'block';
+    }
+
+    // Показать главный экран при загрузке
+    switchScreen('dashboard');
+});
