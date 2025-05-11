@@ -1,4 +1,4 @@
-document.addEventlistener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     const tg = window.Telegram.WebApp;
     tg.ready();
 
