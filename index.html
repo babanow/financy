@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Учет финансов</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="balance">Баланс: <span id="currentBalance">0.00</span></div>
+            <div class="income-expense">
+                <div>Доходы: <span id="totalIncome">0.00</span></div>
+                <div>Расходы: <span id="totalExpense">0.00</span></div>
+            </div>
+        </header>
+        <div class="quick-actions">
+            <button id="addIncomeBtn">Добавить доход</button>
+            <button id="addExpenseBtn">Добавить расход</button>
+        </div>
+        <section class="latest-transactions">
+            <h2>Последние операции</h2>
+            <ul id="transactionsList">
+                </ul>
+        </section>
+        <nav class="bottom-nav">
+            <button data-screen="dashboard" class="active">Главная</button>
+            <button data-screen="income">Доходы</button>
+            <button data-screen="expense">Расходы</button>
+            <button data-screen="reports">Отчеты</button>
+            <button data-screen="categories">Категории</button>
+            <button data-screen="settings">Настройки</button>
+        </nav>
+
+        <div id="incomeScreen" class="screen" style="display: none;">
+            <h2>Доходы</h2>
+            <button id="addIncomeRecordBtn">+ Добавить доход</button>
+            <div id="incomeList">
+                </div>
+        </div>
+
+        <div id="expenseScreen" class="screen" style="display: none;">
+            <h2>Расходы</h2>
+            <button id="addExpenseRecordBtn">+ Добавить расход</button>
+            <div id="expenseList">
+                </div>
+        </div>
+
+        <div id="reportsScreen" class="screen" style="display: none;">
+            <h2>Отчеты</h2>
+            <label for="reportPeriod">Период:</label>
+            <select id="reportPeriod">
+                <option value="day">Сегодня</option>
+                <option value="week">Неделя</option>
+                <option value="month" selected>Месяц</option>
+                <option value="year">Год</option>
+            </select>
+            <div id="reportDetails">
+                </div>
+        </div>
+
+        <div id="categoriesScreen" class="screen" style="display: none;">
+            <h2>Категории</h2>
+            <h3>Доходы</h3>
+            <ul id="incomeCategoriesList">
+                </ul>
+            <button id="addIncomeCategoryBtn">+ Добавить категорию дохода</button>
+            <h3>Расходы</h3>
+            <ul id="expenseCategoriesList">
+                </ul>
+            <button id="addExpenseCategoryBtn">+ Добавить категорию расхода</button>
+        </div>
+
+        <div id="settingsScreen" class="screen" style="display: none;">
+            <h2>Настройки</h2>
+            <label for="currency">Валюта:</label>
+            <select id="currency">
+                <option value="USD" selected>USD</option>
+                <option value="EUR">EUR</option>
+                <option value="RUB">RUB</option>
+                </select>
+        </div>
+
+        <div id="addRecordModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close-button" id="closeRecordModal">&times;</span>
+                <h2 id="modalTitle"></h2>
+                <label for="recordDate">Дата:</label>
+                <input type="date" id="recordDate">
+                <label for="recordCategory">Категория:</label>
+                <select id="recordCategory">
+                    </select>
+                <label for="recordAmount">Сумма:</label>
+                <input type="number" id="recordAmount" step="0.01">
+                <label for="recordDescription">Описание (необязательно):</label>
+                <input type="text" id="recordDescription">
+                <button id="saveRecordBtn">Сохранить</button>
+            </div>
+        </div>
+
+        <div id="addCategoryModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close-button" id="closeCategoryModal">&times;</span>
+                <h2>Добавить категорию</h2>
+                <label for="categoryName">Название категории:</label>
+                <input type="text" id="categoryName">
+                <label for="categoryType">Тип:</label>
+                <select id="categoryType">
+                    <option value="income">Доход</option>
+                    <option value="expense">Расход</option>
+                </select>
+                <button id="saveCategoryBtn">Сохранить</button>
+            </div>
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

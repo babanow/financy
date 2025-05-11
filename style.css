@@ -1,0 +1,236 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.balance {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.income-expense {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+
+.income-expense div {
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.income-expense div:first-child {
+    background-color: #e6ffe6;
+    color: #336633;
+}
+
+.income-expense div:last-child {
+    background-color: #ffe6e6;
+    color: #663333;
+}
+
+.quick-actions {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.quick-actions button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.latest-transactions h2,
+.screen h2,
+.modal-content h2 {
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.latest-transactions ul {
+    list-style: none;
+    padding: 0;
+}
+
+.latest-transactions li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.latest-transactions li:last-child {
+    border-bottom: none;
+}
+
+.bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    background-color: #f0f0f0;
+    border-top: 1px solid #ddd;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.bottom-nav button {
+    border: none;
+    background: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.bottom-nav button.active {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.screen {
+    padding-top: 20px;
+}
+
+.screen label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.screen input[type="date"],
+.screen input[type="number"],
+.screen input[type="text"],
+.screen select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.screen button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 10px;
+}
+
+.modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed; /* Оставаться на месте */
+    z-index: 1; /* Сидеть поверх всего */
+    left: 0;
+    top: 0;
+    width: 100%; /* Полная ширина */
+    height: 100%; /* Полная высота */
+    overflow: auto; /* Включить прокрутку, если нужно */
+    background-color: rgba(0,0,0,0.4); /* Черный с прозрачностью */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% сверху и по центру */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Может быть и меньше, в зависимости от содержимого */
+    border-radius: 8px;
+    position: relative;
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#incomeCategoriesList,
+#expenseCategoriesList {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+#incomeCategoriesList li,
+#expenseCategoriesList li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+#incomeCategoriesList li:last-child,
+#expenseCategoriesList li:last-child {
+    border-bottom: none;
+}
+
+#addIncomeCategoryBtn,
+#addExpenseCategoryBtn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #00c853;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+#saveCategoryBtn {
+    background-color: #00c853 !important;
+}
+
+#reportDetails {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+#reportDetails h3 {
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+#reportDetails p {
+    margin-bottom: 10px;
+}
